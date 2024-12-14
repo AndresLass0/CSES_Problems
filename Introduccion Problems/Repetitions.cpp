@@ -24,31 +24,22 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t; cin>>t;
-    
-    while(t--){
-        ll x, y; cin>>y>>x;
-        ll ans = 0;
-        
-        if(x == y){
-            ans = ((x * x) - x) + 1;
-        }else if(y > x){
-            ans = ((y * y) - y) + 1;
-           
-           int ax  = abs(x - y);
-           if(y%2 == 0) ans += ax;
-           else ans -= ax;
-
-            
-        }else if(x > y){
-            ans = ((x * x) - x) + 1;
-            
-            int ax  = abs(x - y);
-            if(x%2 == 1) ans += ax;
-           else ans -= ax;
-            
+    string s; cin>>s;
+    int r = 0;
+    int l = 0;
+    int mx = -1, c = 0;
+    while(r < sz(s)){
+        if(s[l] == s[r]){
+            c++;
+            mx = max(mx, c);
+        }else{
+            l = r;
+            c = 0;
+            r--;
         }
-        cout << ans << endl;
+        r++;
     }
+    
+
     return 0;
 }

@@ -24,31 +24,21 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t; cin>>t;
+    int n; cin>>n;
+    vector<int> ar(n);
+    forn(i, n) cin>>ar[i];
     
-    while(t--){
-        ll x, y; cin>>y>>x;
-        ll ans = 0;
-        
-        if(x == y){
-            ans = ((x * x) - x) + 1;
-        }else if(y > x){
-            ans = ((y * y) - y) + 1;
-           
-           int ax  = abs(x - y);
-           if(y%2 == 0) ans += ax;
-           else ans -= ax;
-
-            
-        }else if(x > y){
-            ans = ((x * x) - x) + 1;
-            
-            int ax  = abs(x - y);
-            if(x%2 == 1) ans += ax;
-           else ans -= ax;
-            
-        }
-        cout << ans << endl;
+    ll ans = 0;
+    
+    forab(i, 1, n){
+        ll ax = (ar[i-1])  - ar[i];
+        //cout << ar[i] << " "<< ax << endl;
+        //
+        if(ax > 0){ ans += ax; ar[i] = ar[i-1];}
     }
+    
+ 
+    cout << ans << endl;
+
     return 0;
 }
